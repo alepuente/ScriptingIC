@@ -7,10 +7,11 @@ public class Console : MonoBehaviour
 {
     public InputField _inputField;
     public Text _text;
+    public Scriptable player;
 
     void Start()
     {
-
+        ConsoleParser._instance.RegisterCommand("moveto", MoveTo);
     }
 
 
@@ -21,27 +22,35 @@ public class Console : MonoBehaviour
 
     public void NewCommand(string command)
     {
-        _text.text += command + "\n";      
-        string[] auxString = command.Split(' ');
-        auxString[0].ToUpper();
-        if (ConsoleParser._instance._funcs.ContainsKey(auxString[0]))
+        _text.text += command + "\n";
+        Debug.Log("All" + command);
+        string[] splitNewLine = command.Split('\n');
+       
+        foreach (string newline in splitNewLine)
         {
-            //_action = auxString[0];
-        }
-        else
-        {
-            string[] aux;
-            for (int i = 1; i < auxString.Length - 1; i++)
+            Debug.Log("newline" + newline);
+            string[] auxString = newline.Split(' ');
+            foreach (var item in auxString)
             {
-                for (int x = 0; i < auxString.Length - 1; i++)
-                {
-                    aux[x] = auxString[i];
-                }
+                Debug.Log("blank" + item);
             }
-            ConsoleParser._instance.RegisterCommand(aux);
-        }*/
+            if (ConsoleParser._instance.isKeyContained(auxString[0]))
+            {
+                ConsoleParser._instance.ExecuteCommand(auxString[0])(newline);
+            }
+            else
+            {
+                _text.text += "Command not found  \n";
+            }
+        }
         _inputField.text = "";
     }
 
-    
+    public void MoveTo(string str)
+    {
+        string[] auxString = str.Split(' ');
+        player.positions.Enqueue(auxString[1]);
+    }
+
+
 }

@@ -197,6 +197,81 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &494977842
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 494977843}
+  - component: {fileID: 494977845}
+  - component: {fileID: 494977844}
+  m_Layer: 5
+  m_Name: Text (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &494977843
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 494977842}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1450858993}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 162.3, y: -88.5}
+  m_SizeDelta: {x: 293.3, y: 139.7}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &494977844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 494977842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "Para mover el objeto \"moveto + ' ' +  vector3. \nPueden ser secuencias
+    separadas por saltos de linea.\nEjemplo:\nmoveto 5,1,5\nmoveto 10,1,5"
+--- !u!222 &494977845
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 494977842}
 --- !u!1 &516188363
 GameObject:
   m_ObjectHideFlags: 0
@@ -261,7 +336,7 @@ MonoBehaviour:
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 0
-    m_HorizontalOverflow: 1
+    m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 
@@ -312,6 +387,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _inputField: {fileID: 1394209219}
   _text: {fileID: 1789548999}
+  player: {fileID: 1437969874}
 --- !u!224 &707915030
 RectTransform:
   m_ObjectHideFlags: 0
@@ -365,8 +441,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0.00050295005, y: 16.2}
-  m_SizeDelta: {x: 800, y: 33}
+  m_AnchoredPosition: {x: 0.00024897, y: 40.5}
+  m_SizeDelta: {x: 800, y: 81.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1394209217
 MonoBehaviour:
@@ -443,7 +519,7 @@ MonoBehaviour:
   m_InputType: 0
   m_AsteriskChar: 42
   m_KeyboardType: 0
-  m_LineType: 0
+  m_LineType: 2
   m_HideMobileInput: 0
   m_CharacterValidation: 0
   m_CharacterLimit: 0
@@ -505,12 +581,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55b0c4bd55541ff4786a2480e49da46a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scenePositions:
-  - 5,0,5
-  - 10,0,0
-  - -5,5,0
-  aasda: {x: 0, y: 0, z: 0}
-  speed: 0
+  scenePositions: []
+  speed: 1
 --- !u!23 &1437969875
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -606,6 +678,7 @@ RectTransform:
   m_Children:
   - {fileID: 1394209216}
   - {fileID: 1789549001}
+  - {fileID: 494977843}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -742,8 +815,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 5.1, y: 16.35}
-  m_SizeDelta: {x: 789.9, y: -32.701}
+  m_AnchoredPosition: {x: 7.9, y: 40.65}
+  m_SizeDelta: {x: 784.3, y: -81.301}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1808131699
 GameObject:

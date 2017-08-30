@@ -8,7 +8,6 @@ public class Scriptable : MonoBehaviour {
     Script script = new Script();
     public string[] scenePositions;
     public  Queue<string> positions;
-    public Vector3 aasda;
     public int speed;
 
 
@@ -42,7 +41,6 @@ public class Scriptable : MonoBehaviour {
 
         if (Vector3.Distance(transform.position, auxVec) > 0.1f)
         {
-            Debug.Log(auxVec);
             transform.position = Vector3.MoveTowards(transform.position, auxVec, time * speed);
         }
         else
