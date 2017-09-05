@@ -14,7 +14,7 @@ public class Scriptable : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         string scriptCode = @"    			
-			function update (position, dt)
+			function moveto (position, dt)
 				obj.Move(position, dt)
 			end";
 
@@ -52,8 +52,8 @@ public class Scriptable : MonoBehaviour {
     void Update()
     {
         if (positions.Count > 0)
-        {            
-        script.Call(script.Globals["update"], positions.Peek(),Time.deltaTime);
+        {
+            script.Call(script.Globals["moveto"], positions.Peek(), Time.deltaTime);
         }
     }
 }

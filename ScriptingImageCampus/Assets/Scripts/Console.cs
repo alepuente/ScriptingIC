@@ -11,7 +11,7 @@ public class Console : MonoBehaviour
 
     void Start()
     {
-        ConsoleParser._instance.RegisterCommand("moveto", MoveTo);
+        ConsoleParser.instance.RegisterCommand("moveto", MoveTo);
     }
 
 
@@ -23,33 +23,34 @@ public class Console : MonoBehaviour
     public void NewCommand(string command)
     {
         _text.text += command + "\n";
-        Debug.Log("All" + command);
-        string[] splitNewLine = command.Split('\n');
-       
-        foreach (string newline in splitNewLine)
-        {
-            Debug.Log("newline" + newline);
-            string[] auxString = newline.Split(' ');
-            foreach (var item in auxString)
-            {
-                Debug.Log("blank" + item);
-            }
-            if (ConsoleParser._instance.isKeyContained(auxString[0]))
-            {
-                ConsoleParser._instance.ExecuteCommand(auxString[0])(newline);
-            }
-            else
-            {
-                _text.text += "Command not found  \n";
-            }
-        }
+        _text.text += ConsoleParser.instance.ExecuteCommand(command) + "\n";
         _inputField.text = "";
     }
 
-    public void MoveTo(string str)
+    public string MoveTo(params string[] args)
     {
-        string[] auxString = str.Split(' ');
-        player.positions.Enqueue(auxString[1]);
+        if (args.Length >= 3)
+        {
+            string aux = "";
+            for (int i = 0; i < 3; i++)
+            {
+                for (int l = 0; l < args[i].Length; l++)
+                {
+                    if (char.IsDigit(args[i][l])){}
+                    else
+                    {
+                        return "Invalid Argument \"" + args[i][l] + "\"";
+                    }
+                }
+                aux += args[i] + ",";
+            }
+            player.positions.Enqueue(aux);
+            return "Moving to " + aux;
+        }
+        else
+        {
+            return "Not enought arguments";
+        }
     }
 
 
