@@ -3,16 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using MoonSharp.Interpreter;
 
-public class Scriptable : MonoBehaviour {
+public class Scriptable : MonoBehaviour
+{
 
     Script script = new Script();
     public string[] scenePositions;
-    public  Queue<string> positions;
+    public Queue<string> positions;
     public int speed;
+    public static Scriptable _instance;
 
-
-	// Use this for initialization
-	void Start () {
+    void Awake()
+    {
+        _instance = this;
+    }
+    // Use this for initialization
+    void Start()
+    {
         string scriptCode = @"    			
 			function moveto (position, dt)
 				obj.Move(position, dt)
@@ -31,7 +37,7 @@ public class Scriptable : MonoBehaviour {
         {
             positions.Enqueue(item);
         }
-	}
+    }
 
     public void Move(string pos, float time)
     {
